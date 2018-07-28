@@ -1,0 +1,22 @@
+@mixin verticalPadding{
+    padding-top: $verticalPadding;
+    padding-bottom: $verticalPadding;
+}
+
+@mixin horizontalMargin{
+    margin: 0 $horizontalMargin;
+}
+
+@mixin button($color){
+    background-color: lighten($color, 15%);
+    border-color: lighten($color, 15%);
+    color: white;
+    width: 100%;
+
+    &:hover, &:active, &:focus{
+        background-color: $color; 
+        border-color: $color;
+        color: white;
+        width: 100%;
+    }
+}

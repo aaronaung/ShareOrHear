@@ -1,0 +1,16 @@
+.title{
+    @include verticalPadding;
+
+    h1{
+        font-family: $titleFont;
+        font-size: 60px;
+    }
+
+    p{
+        @include verticalPadding;
+        font-family: $regularFont;
+        font-size: 25px;
+        margin: 0;
+        color: #5d5d5d;
+    }
+}

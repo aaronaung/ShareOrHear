@@ -1,0 +1,73 @@
+<div class="mainContainer">
+  <form action="" (submit)="onFormSubmit($event)">
+    <div class="form-group">
+      <label for="title">Story Title</label>
+      <input maxlength='45' placeholder='Required' id='title' name='title' class='form-control' [(ngModel)]='formObject.title' #title="ngModel" required type="text">
+      <div [hidden]="title.valid || title.pristine"
+          class="alert titleErr alert-danger">
+        Title can't be empty
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="story">Tell us your story </label>
+      <textarea maxlength='1000' placeholder='Required (Limited to 1000 characters)' class='form-control' #story='ngModel' [(ngModel)]='formObject.story' name="story" id="story" cols="30" rows="5" required></textarea>
+      <div [hidden]="story.valid || story.pristine"
+          class="alert storyErr alert-danger">
+        Story can't be empty
+      </div>    
+    </div>
+
+    <div class="form-group">
+      <label for="image">Link to cover image</label>
+      <!-- <div class="input-group">
+        <input type="file" accept="image/*" name="image" id="image" #inputRef (change)='onFileChange($event)' class='custom-file-input'>
+        <label for="image" class='custom-file-label'>
+          {{formObject.image}}
+        </label>
+      </div> -->
+      <!-- Use image link for now -->
+      <input name='image' #image='ngModel' pattern="https?://.+" placeholder='Optional' type="text" [(ngModel)]='formObject.imageLink' id="image" class="form-control">
+      <!-- <img *ngIf="formObject.imageLink !== ''" [src]="formObject.imageLink" class='imagePreview' alt="" width="300" height="150"> -->
+      <!-- <button (click)= "removeImage()" type='button' *ngIf='formObject.imageLink !== ""' class='form-control btn btn-md btn-danger removeFileBtn' >Remove</button> -->
+      <div [hidden]="image.valid || image.pristine"
+        class="alert imageErr alert-danger">
+        Please enter a valid url (Tips: you may visit tinypic.com to upload your images)
+      </div>  
+    </div>
+
+    <div class="form-group">
+      <label for="siteLink">Link to external site</label>
+      <input type="text" #siteLink='ngModel' placeholder='Optional' pattern="https?://.+" [(ngModel)]='formObject.siteLink' id='siteLink' name='siteLink' class="form-control">
+      <div [hidden]="siteLink.valid" class="alert siteLinkErr alert-danger">
+        Please enter a valid url. A valid url usually starts with http:// or https:// 
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="videoLink">Link to video</label>
+      <input type="text" #videoLink='ngModel' placeholder='Optional' pattern="https?://www.youtube.com/.+" [(ngModel)]='formObject.videoLink' id='videoLink' name='videoLink' class="form-control">
+      <div [hidden]="videoLink.valid" class="alert videoLinkErr alert-danger">
+        Please enter a valid Youtube video link
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="tags">Tags</label>
+      <input type="text" #tags='ngModel' placeholder='Please enter comma separated tags (Example: politics, poverty, educational)' required [(ngModel)]='formObject.tags' id='tags' name='tags' class="form-control">
+      <div [hidden]="tags.valid || tags.pristine" class="alert tagsErr alert-danger">
+        Please enter at least one tag
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="code">*Code</label>
+      <input maxlength='10' type="text" #code='ngModel' placeholder='Please enter your desired unique identifier for the story (Between 4 - 10 characters)' required [(ngModel)]='formObject.code' id='code' name='code' class="form-control">
+      <div [hidden]="code.valid || code.pristine" class="alert codeErr alert-danger">
+        Please provide your story an identifier for later access
+      </div>
+    </div>
+
+    <button type="submit" class="mb-5 form-control btn btn-lg submitBtn">Submit your story</button>
+  </form>
+</div>

@@ -1,0 +1,14 @@
+<div class="mainContainer">
+  <!-- <a routerLink='' class="btn btn-lg btn-primary form-control btnGray mb-3">Back to home</a> -->
+  <form action="" (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="storyId">Story ID</label>
+      <input placeholder='Required' id ="storyId" name = "storyId" [(ngModel)]='creds.storyId' type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="storyCode">Story Code</label>
+      <input placeholder='Required' id ="storyCode" name = "storyCode" [(ngModel)]='creds.storyCode' type="text" class="form-control" required>
+    </div>
+    <button type="submit" class="mb-5 form-control btn btn-lg submitBtn">Start making edits</button>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+.btnsContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.share-btnRed{
+    @include button($myRed);
+}
+
+.edit-btnYellow{
+    @include button($myYellow);
+}
+
+.hear-btnBlue{
+    @include button($myBlue);
+}

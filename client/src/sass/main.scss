@@ -1,0 +1,12 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+@import 
+    "component-styles/app.scss", 
+    "component-styles/home.scss",
+    "component-styles/share.scss",
+    "component-styles/edit.scss",
+    "component-styles/hear.scss",
+    "component-styles/notfound.scss";
+
+@import "global.scss"; 

@@ -1,0 +1,20 @@
+.custom-file-input ~ .custom-file-label::after {
+    content: "Upload";
+}
+
+.imagePreview{
+    object-fit: cover;
+}
+
+.ng-valid[required],.ng-valid:not(form){
+    border-left: 5px solid $myGreen;
+}
+
+.ng-invalid:not(form){
+    border-left: 5px solid red;
+}
+
+.removeFileBtn{
+    display: block;
+    width: 300px;
+}
