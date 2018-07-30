@@ -21,20 +21,20 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // === HANDLE ROUTES ===
-app.post("/edit", async (req, res) => {
+app.post("/validate", async (req, res) => {
   res.json(await SOH.getStorybyCred(req.body));
 });
 
 app.post("/share", async (req, res) => {
-  res.json(await SOH.insertStory([Object.values(req.body)]));
+  res.json(await SOH.insertStory(req.body));
 });
 
 app.post("/hear", async (req, res) => {
   res.json(await SOH.getStoriesbyTags(req.body));
 });
 
-app.post("/update", async (req, res) => {
-  res.json(await SOH.updateStory([Object.values(req.body.story)]));
+app.post("/edit", async (req, res) => {
+  res.json(await SOH.editStory(req.body));
 });
 
 // === START SERVER ===

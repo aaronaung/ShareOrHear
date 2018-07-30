@@ -1,4 +1,25 @@
 <div class="mainContainer">
     <!-- <a routerLink='' class="btn btn-lg btn-primary form-control btnGray mb-3">Back to home</a> -->
-  <p>Hear page</p>
+    <div *ngIf="storyDNE"
+          class="alert storyErr alert-danger">
+        There are no stories associated with the tags provided.
+    </div> 
+    
+    <form [hidden]="showStoryView" action="" (submit)="onFormSubmit($event)">
+    <div class="form-group">
+      <label for="tags">Tags</label>
+      <input type="text" #tags='ngModel' placeholder='Please enter comma separated tags (Example: politics, poverty, educational)' required [(ngModel)]='formObject.tags' id='tags' name='tags' class="form-control">
+      <div [hidden]="tags.valid || tags.pristine" class="alert tagsErr alert-danger">
+        Please enter at least one tag
+      </div>
+    </div>
+    <button type="submit" class="mb-5 form-control btn btn-lg submitBtn">Hear a story</button>
+  </form>
+
+  <app-story-view [story]='story' *ngIf= "showStoryView"></app-story-view>
+  <div class="text-center">
+      <button *ngIf='showStoryView' (click)='hearMore()' class="mb-5 mt-2 form-control btn btn-lg submitBtn" style="width: 18rem;">Hear a different story</button>
+  </div>
+  
 </div>
+

@@ -21,9 +21,7 @@ export class StoryService {
     let observable: Observable<ResponseStatus>;
     switch (type) {
       case "post":
-        observable = this.http
-          .post(url, body, this.headers)
-          .map((res: Response) => res.json());
+        observable = this.http.post(url, body, this.headers).map((res: Response) => res.json());
         break;
       //Possible implementations for get/put
     }
@@ -34,11 +32,15 @@ export class StoryService {
     return this.makeRequest(`${this.API_BASE}/share`, "post", story);
   }
 
-  editStory(cred): Observable<ResponseStatus> {
-    return this.makeRequest(`${this.API_BASE}/edit`, "post", cred);
+  validateStoryCred(cred): Observable<ResponseStatus> {
+    return this.makeRequest(`${this.API_BASE}/validate`, "post", cred);
   }
 
   hearStory(tags): Observable<ResponseStatus> {
     return this.makeRequest(`${this.API_BASE}/hear`, "post", tags);
+  }
+
+  editStory(story): Observable<ResponseStatus> {
+    return this.makeRequest(`${this.API_BASE}/edit`, "post", story);
   }
 }

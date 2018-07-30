@@ -16,20 +16,37 @@ export class ShareStoryComponent implements OnInit {
     siteLink: "",
     videoLink: "",
     tags: "",
-    code: ""
+    code: "",
+    storyId: ""
   };
 
+  successId = "";
+  successCode = "";
+
+  showCredentials = false;
   constructor(private storyService: StoryService) {}
 
+  handleShareResponse(e) {
+    if (e.status == "success") {
+      this.successId = e.payload[0].id;
+      this.successCode = e.payload[0].code;
+      this.showCredentials = true;
+    }
+  }
+
+  shareMore() {
+    this.formObject = {
+      title: "",
+      story: "",
+      imageLink: "",
+      siteLink: "",
+      videoLink: "",
+      tags: "",
+      code: "",
+      storyId: ""
+    };
+    this.showCredentials = false;
+  }
+
   ngOnInit() {}
-
-  removeImage() {
-    this.formObject.imageLink = "";
-  }
-
-  onFormSubmit(e) {
-    this.storyService
-      .postStory(this.formObject)
-      .subscribe(resp => console.log(resp));
-  }
 }

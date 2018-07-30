@@ -6,6 +6,7 @@ export interface Story {
   videoLink: String;
   tags: String;
   code: String;
+  storyId: String;
 }
 
 export interface ResponseStatus {

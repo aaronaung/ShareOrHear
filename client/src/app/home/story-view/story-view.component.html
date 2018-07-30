@@ -1,0 +1,13 @@
+<h2 class='text-center'>{{story[0].title}}</h2>
+<div class="text-center mt-4">
+  <img class='' *ngIf="story[0].imageLink" src={{story[0].imageLink}} alt="">
+</div>
+
+<p class='mt-4'>{{story[0].story}}</p>
+<hr>
+<div class='text-center' [innerHtml] = 'storyVideo'></div>
+<div class="text-center">
+    <a target="_blank" class='mb-5' href="{{story[0].siteLink}}">Visit the story's website</a>
+</div>
+
+

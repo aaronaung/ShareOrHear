@@ -26,7 +26,7 @@ body, html{
     border: none;
     color: white;
 
-    &:hover, &:active {
+    &:hover, &:active, &:focus {
         background-color: darken($myGreen, 20%);
         color: white;
     }

@@ -1,6 +1,12 @@
 <div class="mainContainer">
   <!-- <a routerLink='' class="btn btn-lg btn-primary form-control btnGray mb-3">Back to home</a> -->
-  <form action="" (submit)="onSubmit()">
+  
+  <div *ngIf='editSuccess' class="alert alert-success">Your story was successfully updated.</div>
+  <div *ngIf="!validCred"
+          class="alert storyErr alert-danger">
+        The credentials passed were invalid.
+  </div> 
+  <form [hidden]="hideCredForm" action="" (submit)="onSubmit()">
     <div class="form-group">
       <label for="storyId">Story ID</label>
       <input placeholder='Required' id ="storyId" name = "storyId" [(ngModel)]='creds.storyId' type="text" class="form-control" required>
@@ -12,3 +18,5 @@
     <button type="submit" class="mb-5 form-control btn btn-lg submitBtn">Start making edits</button>
   </form>
 </div>
+
+<app-story-form (editResponse)="handleEditResponse($event)" [hidden]="hideStoryForm" [formObject]="formObject" [formType]="'edit'"></app-story-form>
