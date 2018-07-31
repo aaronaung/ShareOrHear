@@ -4,14 +4,15 @@ const app = express();
 const cors = require("cors");
 const mysql = require("mysql");
 const creds = require("./server.config.json");
-const SOH_API = require("./soh.api");
+const SOH_API = require("./soh.api"); //
 
 // === CONNECT TO DB & REGISTER SOH_API ===
 const connection = mysql.createConnection({
   host: creds.SQL_HOST,
   user: creds.SQL_USER,
   password: creds.SQL_PW,
-  database: creds.SQL_DB
+  database: creds.SQL_DB,
+  multipleStatements: true
 });
 connection.connect();
 

@@ -20,8 +20,8 @@ class Soh {
 
   // === (Core API methods) : Returns a promise to be resolved then dispatched to client ===
   async getStorybyCred({ storyId, storyCode }) {
-    let sql = `select * from Stories where storyId=${storyId} and code='${storyCode}'`;
-    return await this._execQuery(sql);
+    let sql = `select * from Stories where storyId= ? and code= ?`;
+    return await this._execQuery(sql, [storyId, storyCode]);
   }
 
   async insertStory({ title, story, imageLink, siteLink, videoLink, tags, code }) {
